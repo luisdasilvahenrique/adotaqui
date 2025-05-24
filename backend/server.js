@@ -39,7 +39,7 @@ app.get('/pets', (req, res) => {
 // Rota para cadastra um novo pet
 app.post('/pets', (req, res) => {
   const { id, name, breed, type_of_animal, description ,adopted } = req.body;
-  const sql = 'INSERT INTO pets (id, name, breed, type_of_animal, description, adopted) VALUES (?, ?, ?, ?, ?, ?)';
+  const sql = 'INSERT INTO pets (id, name_animal, breed, type_of_animal, description, adopted) VALUES (?, ?, ?, ?, ?, ?)';
   dataBase.query(sql, [id, name, breed, type_of_animal, description, adopted], (err, result) => {
     if (err) {
       console.error('Erro ao cadastrar o pet:', err);
@@ -53,8 +53,8 @@ app.post('/pets', (req, res) => {
 
 
 // Iniciar servidor
-app.listen(3000, () => {
-  console.log('Servidor rodando na porta 3000!🚀');
+app.listen(3001, () => {
+  console.log('Servidor rodando na porta 3001!🚀');
 });
 
 
