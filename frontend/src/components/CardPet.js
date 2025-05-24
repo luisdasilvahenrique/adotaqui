@@ -1,12 +1,16 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function CardOption({ icon, title }) {
+export default function CardPet({ icon, title, to }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (to) navigate(to);
+  };
+
   return (
-    <div className="card">
-      {/* <img src={require(`../assets/icons/${icon}`)} alt={title} /> */}
+    <div className="card" onClick={handleClick}>
+      {icon}
       <h3>{title}</h3>
     </div>
   );
 }
-
-export default CardOption;

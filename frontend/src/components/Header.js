@@ -1,7 +1,7 @@
 function Header() {
   return (
-    <header>
-      <h1>Sistema Adoção de Pets</h1>
+    <header className="header">
+      <h2>Bem-vindo(a)! <span className="user-name">[Nome do Usuário]</span></h2>
       <p>Escolha uma das opções abaixo</p>
     </header>
   );
