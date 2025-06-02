@@ -24,7 +24,7 @@ dataBase.connect((err) => {
     }
 );
 
-// Rota para obter todos os pets
+// Rota para listar todos os pets
 app.get('/pets', (req, res) => {
   const sql = 'SELECT * FROM pets';
   dataBase.query(sql, (err, result) => {
@@ -50,6 +50,8 @@ app.post('/pets', (req, res) => {
 });
 
 // Outras rotas podem ser adicionadas aqui
+
+
 
 
 // Iniciar servidor

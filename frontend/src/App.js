@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { PawPrint, Search, List, Menu } from 'lucide-react';
+import { PawPrint, Search, List } from 'lucide-react';
 
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 import CardPet from './components/CardPet';
+import Footer from './components/Footer';
 
 import AdoptionQueue from './pages/AdoptionQueue';
 
@@ -30,10 +31,7 @@ function App() {
           </section>
         </main>
 
-        <footer className="footer">
-          <p className="system">Pet Adoption System</p>
-          <p className="copyright">© 2025 Pet Adoption</p>
-        </footer>
+        <Footer />
       </div>
     </div>
   );

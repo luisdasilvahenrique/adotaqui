@@ -19,16 +19,16 @@ function Sidebar() {
       </div>
 
       <nav className="desktop-menu">
-          <a href="#"> Conheça o nosso projeto</a>
-          <a href="#"> Localização</a>
-          <a href="#"> Contate-nos</a>
+          <a href="#" about='Conheça o nosso projeto' aria-details='Informações sobre o projeto'> Conheça o nosso projeto</a>
+          <a href="#" about='Localização' aria-details='Informações sobre a localização'> Localização</a>
+          <a href="#" about='Contate-nos' aria-details='Informações de contato'> Contate-nos</a>
       </nav>
 
       {menuOpen && (
         <nav className="mobile-menu" onClick={toggleMenu} > 
-          <a href="#"><Info size={20} /> Conheça o nosso projeto</a>
-          <a href="#"><MapPin size={20} /> Localização</a>
-          <a href="#"><Phone size={20} /> Contate-nos</a>
+          <a href="#" about='Conheça o nosso projeto' aria-details='Informações sobre o projeto'><Info size={20} /> Conheça o nosso projeto</a>
+          <a href="#" about='Localização' aria-details='Informações sobre a localização'><MapPin size={20} /> Localização</a>
+          <a href="#" about='Contate-nos' aria-details='Informações de contato'><Phone size={20} /> Contate-nos</a>
         </nav>
       )}
     </header>

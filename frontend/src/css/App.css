@@ -131,31 +131,7 @@ header p {
   height: 100px;
 }
 
-/* Footer */
-.footer {
-  background-color: #d9cbb0;
-  padding: 20px;
-  text-align: center;
-  width: 100%;
-  opacity: 0.8;
-}
-
-.footer p {
-  display: inline;
-  margin: 0 0.4rem;
-  color: #333;
-  font-size: 0.8rem;
-}
-
-.footer .system,
-.footer .rights {
-  row-gap: 0.5rem;
-}
-
-/* Icones Sidebar */
-
-
-/* RESPONSIVO */
+/* RESPONSIVIDADE */
 @media (max-width: 770px) {
 
   
