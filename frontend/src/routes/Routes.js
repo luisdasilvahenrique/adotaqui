@@ -11,6 +11,7 @@ export default function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/adoption-queue" element={<AdoptionQueue />} />
       </Routes>
+      
     </BrowserRouter>
   );
 }
