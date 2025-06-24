@@ -6,12 +6,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+require('dotenv').config();
+
 const dataBase = mySql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '', // Altere para a senha do seu MySQL, se necessário, caso esteja usando o XAMPP, a senha padrão é vazia
-  port: 3306, // Altere para a porta correta do seu MySQL, se necessário, caso esteja usando o XAMPP, a porta padrão é 3306, mas
-  database: 'adotaqui'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME
 });
 dataBase.connect((err) => {
     if (err) {
