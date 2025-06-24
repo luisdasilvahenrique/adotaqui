@@ -71,7 +71,10 @@ export default function ModalEditPet({ pet, onClose }) {
             <option value="Disponível">Disponível</option>
             <option value="Adotado">Adotado</option>
           </select>
-          <button type="submit" className="btn btn-save">Salvar</button>
+          <div className="form-actions">
+            <button type="submit" className="btn btn-save">Salvar</button>
+            <button type="button" className="btn btn-cancel" onClick={onClose}>Cancelar</button>
+          </div>
         </form>
       </div>
     </div>

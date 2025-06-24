@@ -2,6 +2,7 @@ import '../css/AdoptionQueue.css';
 
 import Footer from '../components/Footer';
 import ModalEditPet from '../components/ModalEditPet';
+import PetDetails from '../components/PetDetails';
 
 import { useNavigate } from 'react-router-dom';
 import { ArrowBigLeft, Trash2, Info, Edit2 } from 'lucide-react';
@@ -13,6 +14,19 @@ export default function AdoptionQueue() {
   const [selectedPet, setSelectedPet] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  // Função para mostrar detalhes do pet selecionado
+  const handleDetailsClick = (id) => {
+    try {
+      const pet = pets.find(p => p.id === id);
+      if (pet) {
+        setSelectedPet(pet);
+      }
+    } catch (err) {
+      console.error('Erro ao buscar detalhes do pet:', err);
+    }
+  }
+  
+  // Função para buscar a lista de pets
   const getPets = async () => {
     try {
       const response = await axios.get('http://localhost:3001/pets');
@@ -61,15 +75,25 @@ export default function AdoptionQueue() {
               </p>
             </div>
             <div className="action-buttons">
-              <button className="btn btn-edit" onClick={() => openEditModal(pet)}> <Edit2 className="icon" size={20} /> Editar</button>
-              <button className="btn btn-delete"> <Trash2 className="icon" size={20} /> Deletar</button>
-              <button className="btn btn-details"> <Info className="icon" size={20} /> Detalhes</button>
+              <button className="btn btn-edit" onClick={() => openEditModal(pet)}>
+                <Edit2 className="icon" size={20} /> Editar
+              </button>
+              <button className="btn btn-delete">
+                <Trash2 className="icon" size={20} /> Deletar
+              </button>
+              <button className="btn btn-details" onClick={() => handleDetailsClick(pet.id)}>
+                <Info className="icon" size={20} /> Detalhes
+              </button>
             </div>
           </div>
         ))}
 
-        {selectedPet && (
+        {selectedPet && showModal && (
           <ModalEditPet pet={selectedPet} onClose={closeModal} />
+        )}
+
+        {selectedPet && !showModal && (
+          <PetDetails pet={selectedPet} onClose={closeModal} />
         )}
       </div>
       <Footer />

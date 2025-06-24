@@ -9,10 +9,10 @@ app.use(express.json());
 const dataBase = mySql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '1234',
+  password: '', // Altere para a senha do seu MySQL, se necessário, caso esteja usando o XAMPP, a senha padrão é vazia
+  port: 3306, // Altere para a porta correta do seu MySQL, se necessário, caso esteja usando o XAMPP, a porta padrão é 3306, mas
   database: 'adotaqui'
 });
-
 dataBase.connect((err) => {
     if (err) {
         console.error('Erro ao conectar ao banco de dados:😔', err);
@@ -76,12 +76,25 @@ app.delete('/pets/:id', (req, res) => {
   });
 });
 
+// Rota para mostrar os detalhes de um pet específico
+app.get('/pets/:id', (req, res) => {
+  const { id } = req.params;
+  const sql = 'SELECT * FROM pets WHERE id = ?';
+  dataBase.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error('Erro ao buscar o pet:', err);
+      return res.status(500).json({ error: 'Erro ao buscar o pet' });
+    }
+    if (result.length === 0) {
+      return res.status(404).json({ error: 'Pet não encontrado' });
+    }
+    res.json(result[0]);
+  });
+});
+
 // [age ,name, breed, type_of_animal, description, adopted, gender, image_of_animal, id]
 
 // Iniciar servidor
 app.listen(3001, () => {
   console.log('Servidor rodando na porta 3001!🚀');
 });
-
-
-
