@@ -63,19 +63,34 @@
 
 .image-section {
   text-align: center;
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+
 }
 
 .pet-image {
   width: 100%;
-  max-height: 300px;
+  max-width: 300px;
   object-fit: cover;
-  border-radius: 12px;
 }
 
 .info-section {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  width: 100%;
+  padding: 1rem;
+  background: #fdfaf5;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .info-row {

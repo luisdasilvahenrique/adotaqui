@@ -1,3 +1,4 @@
+import ModalDeletePet from '../components/ModalDeletePet';
 import '../css/AdoptionQueue.css';
 
 import Footer from '../components/Footer';
@@ -14,6 +15,9 @@ export default function AdoptionQueue() {
   const [selectedPet, setSelectedPet] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [petToDelete, setPetToDelete] = useState(null);
+
   // Função para mostrar detalhes do pet selecionado
   const handleDetailsClick = (id) => {
     try {
@@ -25,7 +29,7 @@ export default function AdoptionQueue() {
       console.error('Erro ao buscar detalhes do pet:', err);
     }
   }
-  
+
   // Função para buscar a lista de pets
   const getPets = async () => {
     try {
@@ -45,6 +49,28 @@ export default function AdoptionQueue() {
     setSelectedPet(null);
     setShowModal(false);
     getPets();
+  };
+
+  const openDeleteModal = (pet) => {
+    setPetToDelete(pet);
+    setShowDeleteModal(true);
+  };
+
+  const closeDeleteModal = () => {
+    setPetToDelete(null);
+    setShowDeleteModal(false);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3001/pets/${id}`);
+      alert('Pet excluído com sucesso!');
+      getPets(); // Atualiza a lista
+      closeDeleteModal();
+    } catch (err) {
+      console.error('Erro ao deletar o pet:', err);
+      alert('Erro ao excluir o pet.');
+    }
   };
 
   useEffect(() => {
@@ -78,7 +104,7 @@ export default function AdoptionQueue() {
               <button className="btn btn-edit" onClick={() => openEditModal(pet)}>
                 <Edit2 className="icon" size={20} /> Editar
               </button>
-              <button className="btn btn-delete">
+              <button className="btn btn-delete" onClick={() => openDeleteModal(pet)}>
                 <Trash2 className="icon" size={20} /> Deletar
               </button>
               <button className="btn btn-details" onClick={() => handleDetailsClick(pet.id)}>
@@ -89,11 +115,24 @@ export default function AdoptionQueue() {
         ))}
 
         {selectedPet && showModal && (
-          <ModalEditPet pet={selectedPet} onClose={closeModal} />
+          <ModalEditPet 
+            pet={selectedPet} 
+            onClose={closeModal} 
+          />
         )}
 
         {selectedPet && !showModal && (
-          <PetDetails pet={selectedPet} onClose={closeModal} />
+          <PetDetails 
+            pet={selectedPet} 
+            onClose={closeModal} />
+        )}
+
+        {showDeleteModal && (
+          <ModalDeletePet
+            pet={petToDelete}
+            onClose={closeDeleteModal}
+            onConfirm={handleDelete}
+          />
         )}
       </div>
       <Footer />
