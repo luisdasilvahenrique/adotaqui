@@ -1,16 +1,16 @@
 import ModalDeletePet from '../components/ModalDeletePet';
-import '../css/AdoptionQueue.css';
+import '../css/RegisteredAnimal.css';
 
 import Footer from '../components/Footer';
 import ModalEditPet from '../components/ModalEditPet';
 import PetDetails from '../components/PetDetails';
 
 import { useNavigate } from 'react-router-dom';
-import { ArrowBigLeft, Trash2, Info, Edit2 } from 'lucide-react';
+import { ArrowBigLeft, Trash2, Info, Edit2, HomeIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function AdoptionQueue() {
+export default function RegisteredAnimal() {
   const [pets, setPets] = useState([]);
   const [selectedPet, setSelectedPet] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -26,7 +26,7 @@ export default function AdoptionQueue() {
         setSelectedPet(pet);
       }
     } catch (err) {
-      console.error('Erro ao buscar detalhes do pet:', err);
+      console.error('Erro ao buscar detalhes do animal:', err);
     }
   }
 
@@ -64,12 +64,12 @@ export default function AdoptionQueue() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:3001/pets/${id}`);
-      alert('Pet excluído com sucesso!');
-      getPets(); // Atualiza a lista
+      alert('Animal excluído com sucesso!');
+      getPets(); // Atualiza a lista de pets após exclusão
       closeDeleteModal();
     } catch (err) {
-      console.error('Erro ao deletar o pet:', err);
-      alert('Erro ao excluir o pet.');
+      console.error('Erro ao deletar o animal:', err);
+      alert('Erro ao excluir o animal.');
     }
   };
 
@@ -83,9 +83,9 @@ export default function AdoptionQueue() {
     <>
       <div className="adoption-container">
         <button onClick={() => navigate('/')} className="btn btn-home">
-          <ArrowBigLeft className="arrow-left" /> Voltar para Home
+          <ArrowBigLeft /> Voltar para Home 
         </button>
-        <h1 className="adoption-title">Fila de Adoção</h1>
+        <h1 className="adoption-title">Animais Cadastrados</h1>
 
         {pets.map((pet) => (
           <div key={pet.id} className="adoption-card">
