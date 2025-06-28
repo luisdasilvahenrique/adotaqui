@@ -7,7 +7,8 @@ import Header from './components/Header';
 import CardPet from './components/CardPet';
 import Footer from './components/Footer';
 
-import AdoptionQueue from './pages/AdoptionQueue';
+import RegisteredAnimal from './pages/RegisteredAnimal';
+import RegisterPet from './pages/RegisterPet';
 
 import './css/App.css';
 
@@ -25,9 +26,9 @@ function App() {
         <main className="main">
           <Header />
           <section className="options">
-            <CardPet icon={<PawPrint size={36} />} title="Cadastrar Pet" />
-            <CardPet icon={<Search size={36} />} title="Buscar Pets" />
-            <CardPet icon={<List size={36} />} title="Fila de Adoção" to="adoption-queue" />
+            <CardPet icon={<PawPrint size={36} />} title="Cadastrar Animal" to="register-pet" />
+            <CardPet icon={<Search size={36} />} title="Buscar Animais" />
+            <CardPet icon={<List size={36} />} title="Animais Cadastrados" to="registered-animal" />
           </section>
         </main>
 
@@ -42,7 +43,8 @@ export default function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="adoption-queue" element={<AdoptionQueue />} />
+        <Route path="registered-animal" element={<RegisteredAnimal />} />
+        <Route path="register-pet" element={<RegisterPet />} />
       </Routes>
     </BrowserRouter>
   );

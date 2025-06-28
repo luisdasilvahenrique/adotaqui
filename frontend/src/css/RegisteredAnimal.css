@@ -1,7 +1,7 @@
 .btn-home {
-  background-color: #c3a473;
+  /* background-color: #c7b18d; */
   color: #fff;
-  padding: 10px 16px;
+  /* padding: 10px 16px; */
   border: none;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -13,21 +13,23 @@
 }
 
 .btn-home:hover {
-  background-color: #b39564;
+  background-color: #bba98e;
+  color: #fff;
 }
 
-.arrow-left {
+/* .arrow-left-adoption {
   padding: 2px;
   transition: transform 0.3s;
   transform: rotate(0deg);
 }
 
-.arrow-left {
+.arrow-left-adoption {
   display: inline-block;
   width: 24px;
   height: 24px;
-  fill: #c3a473;
-}
+  fill: #c7b18d;
+  margin-right: 8px;
+} */
 
 .adoption-container {
   padding: 40px;

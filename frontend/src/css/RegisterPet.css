@@ -1,0 +1,88 @@
+.register-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  background-color: #f6f1e7;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-home {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.arrow-left-register {
+  margin-right: 8px;
+}
+
+.register-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #4a3f35;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+legend {
+  font-weight: bold;
+  color: #4a3f35;
+  padding: 0 0.5rem;
+}
+
+select{
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #bbb;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.btn-submit {
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #d9cbb0;
+  color: #333;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-submit:hover {
+  background-color: #c8b59a;
+}
