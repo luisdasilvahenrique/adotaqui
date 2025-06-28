@@ -8,6 +8,7 @@ import CardPet from './components/CardPet';
 import Footer from './components/Footer';
 
 import AdoptionQueue from './pages/AdoptionQueue';
+import SearchForPets from './pages/SearchForPets';
 
 import './css/App.css';
 
@@ -26,7 +27,7 @@ function App() {
           <Header />
           <section className="options">
             <CardPet icon={<PawPrint size={36} />} title="Cadastrar Pet" />
-            <CardPet icon={<Search size={36} />} title="Buscar Pets" />
+            <CardPet icon={<Search size={36} />} title="Buscar Pets" to = "search-for-pets" /> 
             <CardPet icon={<List size={36} />} title="Fila de Adoção" to="adoption-queue" />
           </section>
         </main>
@@ -43,6 +44,7 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="adoption-queue" element={<AdoptionQueue />} />
+        <Route path="search-for-pets" element={<SearchForPets />} />
       </Routes>
     </BrowserRouter>
   );

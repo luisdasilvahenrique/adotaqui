@@ -25,9 +25,9 @@ html,
 }
 
 .sidebar {
-  background-color: #d9cbb0;
+  background-color: #F3ECE3;
   width: 200px;
-  padding: 40px;
+  padding: 4px;
   color: #333;
 }
 
@@ -155,16 +155,17 @@ header p {
 
   .mobile-menu {
     position: absolute;
-    top: 40px;
-    right: auto;
-
+    top: 50px;
+    left: 0;
     z-index: 1000;
-    background-color: #d9cbb0;
+    background-color: #F3ECE3;
     padding: 15px;
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     width:  max-content;
     min-width: 150px;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
   }
 
   .mobile-menu a {
@@ -219,7 +220,7 @@ header p {
 
   .sidebar {
     width: 200px;
-    padding: 40px;
+    padding: 8px;
   }
 
   .mobile-menu {

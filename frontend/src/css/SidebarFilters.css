@@ -1,0 +1,113 @@
+.sidebarFilters {
+  background-color: #F3ECE3;
+  padding: 8px;
+  border-radius: 12px;
+  font-family: sans-serif;
+  width: 90%;
+ 
+}
+
+.sidebarFilters-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.sidebarFilters-group {
+  margin-bottom: 1rem;
+}
+
+.sidebarFilters-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.sidebarFilters-option {
+  display: block;
+  margin: 3px 0;
+  font-size: 0.9rem;
+}
+
+.sidebarFilters-checkbox {
+  margin-right: 6px;
+}
+
+.sidebarFilters-select {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.sidebarFilters-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.btn-filter {
+  background-color: #9ce4b1;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-clear {
+  background-color: #666;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.widht-auto{
+    display: inline-block ;
+    width: auto 
+}
+
+.sem-negrito{
+   font-weight: normal;
+}
+
+@media (max-width: 770px) {
+  .sidebarFilters {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+
+  .sidebarFilters-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-filter,
+  .btn-clear {
+    width: 100%;
+  }
+}
+
+@media (min-width: 771px) {
+  .sidebarFilters {
+    width: 90%;
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .sidebarFilters-actions {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .btn-filter,
+  .btn-clear {
+    width: auto;
+  }
+}

@@ -18,7 +18,7 @@ function Sidebar() {
         </button>
       </div>
 
-      <nav className="desktop-menu">
+<nav className="desktop-menu">
           <a href="#" about='Conheça o nosso projeto' aria-details='Informações sobre o projeto'> Conheça o nosso projeto</a>
           <a href="#" about='Localização' aria-details='Informações sobre a localização'> Localização</a>
           <a href="#" about='Contate-nos' aria-details='Informações de contato'> Contate-nos</a>
