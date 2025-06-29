@@ -23,8 +23,8 @@ const RegisterPet = () => {
       await axios.post('http://localhost:3001/pets', form);
       alert('Animal cadastrado com sucesso!');
       setForm({
-        nome: '', idade: '', sexo: '', raca: '',
-        especie: '', status: 'disponível', descricao: '', imagem: '',
+        name: '', age: '', gender: '', breed: '',
+        type_of_animal: '', adopted: '', description: '', image_of_animal: '',
       });
     } catch (err) {
       alert('Erro ao cadastrar o animal');
