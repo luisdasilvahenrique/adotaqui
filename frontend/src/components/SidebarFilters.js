@@ -1,45 +1,29 @@
-import { useState } from 'react';
 import '../css/SidebarFilters.css';
 
-export default function SidebarFilters({ onFilter, onClear, className = '' }) {
-  const [filters, setFilters] = useState({
-    species: [],
-    gender: [],
-    breed: [],
-    vaccinated: [],
-    neutered: [],
-    age: '',
-  });
-
+export default function SidebarFilters({ filters, setFilters, className = '' }) {
   const handleCheckboxChange = (category, value) => {
-    setFilters((prev) => {
-      const current = prev[category];
-      const updated = current.includes(value)
-        ? current.filter((v) => v !== value)
-        : [...current, value];
-      return { ...prev, [category]: updated };
-    });
+    const current = filters[category];
+    const updated = current.includes(value)
+      ? current.filter((v) => v !== value)
+      : [...current, value];
+    setFilters({ ...filters, [category]: updated });
   };
 
   const handleAgeChange = (e) => {
     setFilters({ ...filters, age: e.target.value });
   };
 
-  const handleSubmit = () => {
-    onFilter(filters);
-  };
-
   const handleClear = () => {
     setFilters({
-      species: [],
+      type_of_animal: [],
       gender: [],
       breed: [],
       vaccinated: [],
       neutered: [],
       age: '',
     });
-    onClear();
   };
+
 
   return (
     <div className={`sidebarFilters ${className}`}>
@@ -47,9 +31,11 @@ export default function SidebarFilters({ onFilter, onClear, className = '' }) {
 
       <div className="sidebarFilters-group">
         <p className="sidebarFilters-label">Espécie:</p>
-        <div><label className="widht-auto sem-negrito">Cachorro</label> <input className="widht-auto" type="checkbox" checked={filters.species.includes('Cachorro')} onChange={() => handleCheckboxChange('species', 'Cachorro')} /></div>
-        <div><label className="widht-auto sem-negrito">Gato</label> <input className="widht-auto" type="checkbox" checked={filters.species.includes('Gato')} onChange={() => handleCheckboxChange('species', 'Gato')} /></div>
+        <div><label className="widht-auto sem-negrito">Cachorro</label> <input className="widht-auto" type="checkbox" checked={filters.type_of_animal.includes('cao')} onChange={() => handleCheckboxChange('type_of_animal', 'cao')} /></div>
+        <div><label className="widht-auto sem-negrito">Ave</label> <input className="widht-auto" type="checkbox" checked={filters.type_of_animal.includes('ave')} onChange={() => handleCheckboxChange('type_of_animal', 'ave')} /></div>
+        <div><label className="widht-auto sem-negrito">Gato</label> <input className="widht-auto" type="checkbox" checked={filters.type_of_animal.includes('gato')} onChange={() => handleCheckboxChange('type_of_animal', 'gato')} /></div>
       </div>
+
 
       <div className="sidebarFilters-group">
         <p className="sidebarFilters-label">Idade:</p>
@@ -62,9 +48,9 @@ export default function SidebarFilters({ onFilter, onClear, className = '' }) {
       </div>
 
       <div className="sidebarFilters-group">
-        <p className="sidebarFilters-label">Sexo:</p>
-        <div><label className="widht-auto sem-negrito">Masculino</label> <input className="widht-auto" type="checkbox" checked={filters.gender.includes('Masculino')} onChange={() => handleCheckboxChange('gender', 'Masculino')} /></div>
-        <div><label className="widht-auto sem-negrito">Feminino</label> <input className="widht-auto" type="checkbox" checked={filters.gender.includes('Feminino')} onChange={() => handleCheckboxChange('gender', 'Feminino')} /></div>
+        <p className="sidebarFilters-label">Gênero:</p>
+        <div><label className="widht-auto sem-negrito">Macho</label> <input className="widht-auto" type="checkbox" checked={filters.gender.includes('Macho')} onChange={() => handleCheckboxChange('gender', 'Macho')} /></div>
+        <div><label className="widht-auto sem-negrito">Fêmea</label> <input className="widht-auto" type="checkbox" checked={filters.gender.includes('Fêmea')} onChange={() => handleCheckboxChange('gender', 'Fêmea')} /></div>
       </div>
 
       <div className="sidebarFilters-group">
@@ -94,10 +80,7 @@ export default function SidebarFilters({ onFilter, onClear, className = '' }) {
         <div><label className="widht-auto sem-negrito">Não</label> <input className="widht-auto" type="checkbox" checked={filters.neutered.includes('Não')} onChange={() => handleCheckboxChange('neutered', 'Não')} /></div>
       </div>
 
-      <div className="sidebarFilters-actions">
-        <button className="btn-filter" onClick={handleSubmit}>Filtrar</button>
-        <button className="btn-clear" onClick={handleClear}>Limpar</button>
-      </div>
+      
     </div>
   );
 }

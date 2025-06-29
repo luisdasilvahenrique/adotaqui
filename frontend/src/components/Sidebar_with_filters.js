@@ -2,7 +2,7 @@ import { Menu, X, Info, MapPin, Phone } from 'lucide-react';
 import { useState } from 'react';
 import SidebarFilters from './SidebarFilters';
 
-function Sidebar() {
+function Sidebar({ isOpen, onClose, filters, setFilters }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -19,19 +19,20 @@ function Sidebar() {
         </button>
       </div>
 
-     <SidebarFilters className = "desktop-menu"
-  onFilter={(filters) => console.log(filters)}
-  onClear={() => console.log('Filtros limpos')}
-/>
+      <SidebarFilters
+        className="desktop-menu"
+        filters={filters}
+        setFilters={setFilters}
+      />
 
- {menuOpen && (
-        <SidebarFilters className="mobile-menu" onClick={toggleMenu}
-  onFilter={(filters) => console.log(filters)}
-  onClear={() => console.log('Filtros limpos')}
-/>
+      {menuOpen && (
+        <SidebarFilters
+          className="mobile-menu"
+          filters={filters}
+          setFilters={setFilters}
+        />
       )}
     </header>
   );
 }
-
 export default Sidebar;

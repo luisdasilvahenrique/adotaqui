@@ -12,12 +12,21 @@ import axios from 'axios';
 
 export default function SearchForPets() {
   const [pets, setPets] = useState([]);
+  const [filters, setFilters] = useState({
+    type_of_animal: [],
+    gender: [],
+    breed: [],
+    vaccinated: [],
+    neutered: [],
+    age: '',
+  });
+
   const [selectedPet, setSelectedPet] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [petToDelete, setPetToDelete] = useState(null);
+  const navigate = useNavigate();
 
   const getPets = async () => {
     try {
@@ -28,11 +37,51 @@ export default function SearchForPets() {
     }
   };
 
+  const getPetsFiltered = async (filters) => {
+  try {
+    const response = await axios.get('http://localhost:3001/pets');
+    let filtered = response.data;
+
+    if (filters.type_of_animal.length) {
+      filtered = filtered.filter(pet => filters.type_of_animal.includes(pet.type_of_animal));
+    }
+
+    if (filters.gender.length) {
+      filtered = filtered.filter(pet => filters.gender.includes(pet.gender));
+    }
+
+    if (filters.breed.length) {
+      filtered = filtered.filter(pet => filters.breed.includes(pet.breed));
+    }
+
+    if (filters.vaccinated.length) {
+      filtered = filtered.filter(pet => filters.vaccinated.includes(pet.vaccinated));
+    }
+
+    if (filters.neutered.length) {
+      filtered = filtered.filter(pet => filters.neutered.includes(pet.neutered));
+    }
+
+    if (filters.age) {
+      filtered = filtered.filter(pet => {
+        const age = Number(pet.age);
+        if (filters.age === '0-1') return age <= 1;
+        if (filters.age === '1-3') return age >= 1 && age <= 3;
+        if (filters.age === '4+') return age >= 4;
+        return true;
+      });
+    }
+
+    console.log('Pets filtrados localmente:', filtered);
+    setPets(filtered);
+  } catch (error) {
+    console.error('Erro ao filtrar pets localmente:', error);
+  }
+};
+
   const handleDetailsClick = (id) => {
     const pet = pets.find((p) => p.id === id);
-    if (pet) {
-      setSelectedPet(pet);
-    }
+    if (pet) setSelectedPet(pet);
   };
 
   const openDeleteModal = (pet) => {
@@ -48,17 +97,39 @@ export default function SearchForPets() {
   const closeModal = () => {
     setSelectedPet(null);
     setShowModal(false);
-    getPets();
+    getPets(); // recarrega pets após edição
   };
 
+  const handleClearFilters = () => {
+    setFilters({
+      type_of_animal: [],
+      gender: [],
+      breed: [],
+      vaccinated: [],
+      neutered: [],
+      age: '',
+    });
+  };
+
+  // Fetch inicial
   useEffect(() => {
     getPets();
   }, []);
 
+  // Aplica filtros sempre que filtros mudarem
+  useEffect(() => {
+    console.log('Filtros atualizados:', filters);
+    getPetsFiltered(filters);
+  }, [filters]);
   return (
     <>
       <div className="container">
-        <Sidebar isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+        <Sidebar
+          isOpen={menuOpen}
+          onClose={() => setMenuOpen(false)}
+          filters={filters}
+          setFilters={setFilters}
+        />
 
         <div className="content" onClick={() => menuOpen && setMenuOpen(false)}>
           <div className="search-container">
