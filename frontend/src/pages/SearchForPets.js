@@ -2,8 +2,8 @@ import '../css/SearchForPets.css';
 
 import Footer from '../components/Footer';
 import ModalEditPet from '../components/ModalEditPet';
-import PetDetails from '../components/PetDetails';
 import Sidebar from '../components/Sidebar_with_filters';
+import PetDetails from '../components/PetDetails';
 
 import { useNavigate } from 'react-router-dom';
 import { Trash2, Info, Edit2 } from 'lucide-react';
