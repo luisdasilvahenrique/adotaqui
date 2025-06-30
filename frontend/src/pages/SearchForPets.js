@@ -2,7 +2,7 @@ import '../css/SearchForPets.css';
 
 import Footer from '../components/Footer';
 import ModalEditPet from '../components/ModalEditPet';
-import Sidebar from '../components/Sidebar_with_filters';
+import Sidebar from '../components/SidebarWithFilters';
 import PetDetails from '../components/PetDetails';
 
 import { useNavigate } from 'react-router-dom';
