@@ -10,6 +10,33 @@ app.use(express.json());
 
 const db = DB.connectionDB();
 
+// Rota para autorizar o usuario
+app.post('/adm', (req, res) => {
+  const usuario = req.body.usuario;
+  const senha = req.body.senha;
+
+  db.query('SELECT * FROM adm WHERE usuario = ?', [usuario], (err, result) => {
+    if(err) return res.status(500).json({ erro: 'Erro no servidor' });
+
+    if (result.length === 0) {
+      return res.status(404).json({ campo: 'usuario', mensagem: 'Usuário não encontrado' });
+    }
+
+    result = result[0];//do banco de dados
+    const senhaCorreta = result.senha === senha; 
+     if (!senhaCorreta) {
+      // Usuário existe mas senha não bate ➜ 401
+      return res.status(401).json({ campo: 'senha', mensagem: 'Senha incorreta' });
+    }
+
+    res.status(200).json({ mensagem : 'Login autorizado' });
+  })
+
+
+
+});
+
+
 // Rota para listar todos os pets
 app.get('/pets', (req, res) => {
   const sql = 'SELECT * FROM pets';
@@ -20,12 +47,12 @@ app.get('/pets', (req, res) => {
     }
     res.json(result);
   });
-  
+
 });
 
 // Rota para cadastra um novo pet
 app.post('/pets', (req, res) => {
-  const { id, name, breed, type_of_animal, description ,adopted, gender, image_of_animal, age } = req.body;
+  const { id, name, breed, type_of_animal, description, adopted, gender, image_of_animal, age } = req.body;
   const sql = 'INSERT INTO pets (id, name, breed, type_of_animal, description, adopted, gender, image_of_animal, age) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
   db.query(sql, [id, name, breed, type_of_animal, description, adopted, gender, image_of_animal, age], (err, result) => {
     if (err) {
