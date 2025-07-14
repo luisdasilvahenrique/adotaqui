@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 
 import RegisteredAnimal from './pages/RegisteredAnimal';
 import RegisterPet from './pages/RegisterPet';
+import SearchForPets from './pages/SearchForPets';
 
 import './css/App.css';
 
@@ -27,11 +28,10 @@ function App() {
           <Header />
           <section className="options">
             <CardPet icon={<PawPrint size={36} />} title="Cadastrar Animal" to="register-pet" />
-            <CardPet icon={<Search size={36} />} title="Buscar Animais" />
+            <CardPet icon={<Search size={36} />} title="Buscar Animais"  to="search-for-pets" />
             <CardPet icon={<List size={36} />} title="Animais Cadastrados" to="registered-animal" />
           </section>
         </main>
-
         <Footer />
       </div>
     </div>
@@ -45,6 +45,7 @@ export default function AppRoutes() {
         <Route path="/" element={<App />} />
         <Route path="registered-animal" element={<RegisteredAnimal />} />
         <Route path="register-pet" element={<RegisterPet />} />
+        <Route path="search-for-pets" element={<SearchForPets />} />
       </Routes>
     </BrowserRouter>
   );

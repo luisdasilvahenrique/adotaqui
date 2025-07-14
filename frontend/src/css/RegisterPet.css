@@ -71,18 +71,16 @@ textarea {
   min-height: 80px;
 }
 
-.btn-submit {
+.btn.btn-submit {
   margin: 0 auto;
   padding: 12px;
-  background-color: #d9cbb0;
-  color: #333;
+  background-color: #22C55E;
   font-weight: bold;
-  border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .btn-submit:hover {
-  background-color: #c8b59a;
+  background-color: #16A34A;
 }

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ArrowBigLeft, Plus } from 'lucide-react';
 import axios from 'axios';
-import { ArrowBigLeft } from 'lucide-react';
+
 import '../css/RegisterPet.css';
 
 const RegisterPet = () => {
@@ -65,7 +66,7 @@ const RegisterPet = () => {
           <textarea name="description" placeholder="Alguma anotação sobre o animal" value={form.description} onChange={handleChange}></textarea>
         </fieldset>
 
-        <button type="submit" className="btn btn-submit">Cadastrar Animal</button>
+        <button type="submit" className="btn btn-submit">Cadastrar Animal <Plus size={20}/></button>
       </form>
     </div>
   );

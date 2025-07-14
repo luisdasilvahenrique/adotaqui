@@ -1,0 +1,30 @@
+.sidebar nav a,
+.mobile-menu a {
+  display: flex;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.sidebar nav a{
+  margin-top: 20px;
+  color: #333;
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+.sidebar {
+  background-color: #F3ECE3;
+  width: 200px;
+  padding: 4px;
+  color: #333;
+}
+
+.sidebar .navbar-content {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

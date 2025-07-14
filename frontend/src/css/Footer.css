@@ -1,5 +1,5 @@
 .footer {
-  background-color: #d9cbb0;
+  background-color: #F3ECE3;
   padding: 20px;
   text-align: center;
   width: 100%;
@@ -8,9 +8,13 @@
 
 .footer p {
   display: inline;
-  margin: 0 0.4rem;
-  color: #333;
+  text-align: center;
+  margin: 0 0.5rem;
+  color: #1a1818;
   font-size: 0.8rem;
+
+  font-family: 'Roboto', sans-serif;
+  opacity: 0.8;
 }
 
 .footer .system,

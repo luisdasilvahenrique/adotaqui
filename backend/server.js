@@ -16,12 +16,12 @@ const dataBase = mySql.createConnection({
   database: process.env.DB_NAME
 });
 dataBase.connect((err) => {
-    if (err) {
-        console.error('Erro ao conectar ao banco de dados:😔', err);
-        return;
-    }
-    console.log('Conexão com o banco de dados estabelecida com sucesso!🛜');
-    }
+  if (err) {
+    console.error('Erro ao conectar ao banco de dados:😔', err);
+    return;
+  }
+  console.log('Conexão com o banco de dados estabelecida com sucesso!🛜');
+}
 );
 
 // Rota para listar todos os pets
@@ -34,12 +34,12 @@ app.get('/pets', (req, res) => {
     }
     res.json(result);
   });
-  
+
 });
 
 // Rota para cadastra um novo pet
 app.post('/pets', (req, res) => {
-  const { id, name, breed, type_of_animal, description ,adopted, gender, image_of_animal, age } = req.body;
+  const { id, name, breed, type_of_animal, description, adopted, gender, image_of_animal, age } = req.body;
   const sql = 'INSERT INTO pets (id, name, breed, type_of_animal, description, adopted, gender, image_of_animal, age) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
   dataBase.query(sql, [id, name, breed, type_of_animal, description, adopted, gender, image_of_animal, age], (err, result) => {
     if (err) {
@@ -91,6 +91,42 @@ app.get('/pets/:id', (req, res) => {
       return res.status(404).json({ error: 'Pet não encontrado' });
     }
     res.json(result[0]);
+  });
+});
+
+// Rota para buscar os filtros de espécies
+
+// GET todos os tipos distintos
+app.get('/pets/filters/types', (req, res) => {
+  const sql = 'SELECT DISTINCT type_of_animal FROM pets';
+  dataBase.query(sql, (err, result) => {
+    if (err) return res.status(500).json({ error: 'Erro ao buscar tipos' });
+    res.json(result.map(r => r.type_of_animal));
+    console.log('Tipo recebido:', breed);
+  });
+});
+
+// GET todos os gêneros distintos
+app.get('/pets/filters/genders', (req, res) => {
+  const sql = 'SELECT DISTINCT gender FROM pets';
+  dataBase.query(sql, (err, result) => {
+    if (err) return res.status(500).json({ error: 'Erro ao buscar gêneros' });
+    res.json(result.map(r => r.gender));
+    
+  });
+});
+
+// POST raças conforme espécies selecionadas
+app.post('/pets/filters/breeds', (req, res) => {
+  const { type_of_animal } = req.body;
+  if (!type_of_animal || type_of_animal.length === 0) return res.json([]);
+
+  const placeholders = type_of_animal.map(() => '?').join(',');
+  const sql = `SELECT DISTINCT breed FROM pets WHERE type_of_animal IN (${placeholders})`;
+
+  dataBase.query(sql, type_of_animal, (err, result) => {
+    if (err) return res.status(500).json({ error: 'Erro ao buscar raças' });
+    res.json(result.map(r => r.breed));
   });
 });
 
