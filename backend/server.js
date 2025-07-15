@@ -102,7 +102,7 @@ app.get('/pets/filters/types', (req, res) => {
   dataBase.query(sql, (err, result) => {
     if (err) return res.status(500).json({ error: 'Erro ao buscar tipos' });
     res.json(result.map(r => r.type_of_animal));
-    console.log('Tipo recebido:', breed);
+    console.log('Tipo recebido:', result.breed); 
   });
 });
 
