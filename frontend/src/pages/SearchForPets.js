@@ -1,7 +1,6 @@
-// SearchForPets.jsx
 import '../css/SearchForPets.css';
 import Footer from '../components/Footer';
-import Sidebar from '../components/Sidebar_with_filters';
+import Sidebar from '../components/SidebarWithFilters';
 import PetDetails from '../components/PetDetails';
 
 import { useNavigate } from 'react-router-dom';
@@ -100,9 +99,11 @@ export default function SearchForPets() {
         />
 
         <div className="content">
-          <button className="btn btn-home" onClick={() => navigate('/')}>
-            <ArrowBigLeft /> Voltar para Home
-          </button>
+          <div className="back-home">
+            <button className="btn btn-home" onClick={() => navigate('/')}>
+              <ArrowBigLeft /> Voltar para Home
+            </button>
+          </div>
 
           <div className="search-container">
             {pets

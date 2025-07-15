@@ -13,9 +13,9 @@ export default function SidebarFilters({
   const [draft, setDraft] = useState(filters);
 
   // listas vindas do back‑end
-  const [availableTypes,   setAvailableTypes]   = useState([]);
+  const [availableTypes, setAvailableTypes] = useState([]);
   const [availableGenders, setAvailableGenders] = useState([]);
-  const [availableBreeds,  setAvailableBreeds]  = useState([]);
+  const [availableBreeds, setAvailableBreeds] = useState([]);
 
   /* ---------- obter tipos/gêneros na montagem ---------- */
   useEffect(() => {
@@ -38,8 +38,8 @@ export default function SidebarFilters({
     axios.post('http://localhost:3001/pets/filters/breeds', {
       type_of_animal: draft.type_of_animal,
     })
-    .then(res => setAvailableBreeds(res.data))
-    .catch(err => console.error('Erro ao buscar raças:', err));
+      .then(res => setAvailableBreeds(res.data))
+      .catch(err => console.error('Erro ao buscar raças:', err));
   }, [draft.type_of_animal]);
 
   /* ---------- helpers ---------- */
@@ -112,7 +112,7 @@ export default function SidebarFilters({
         >
           <option value="">Todas</option>
           <option value="0-1">Até 1 ano</option>
-          <option value="1-3">1 a 3 anos</option>
+          <option value="1-3">1 a 3 anos</option>
           <option value="4+">4+ anos</option>
         </select>
       </div>

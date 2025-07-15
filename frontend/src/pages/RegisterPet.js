@@ -48,8 +48,8 @@ const RegisterPet = () => {
           <input type="number" name="age" placeholder="Idade" value={form.age} onChange={handleChange} required />
           <select name="gender" value={form.gender} onChange={handleChange} required>
             <option value="">Selecione o sexo</option>
-            <option value="male">Macho</option>
-            <option value="female">Fêmea</option>
+            <option value="Macho">Macho</option>
+            <option value="Fêmea">Fêmea</option>
           </select>
           <select name="adopted" value={form.adopted} onChange={handleChange} required>
             <option value="">Disponibilidade para adoção</option>
