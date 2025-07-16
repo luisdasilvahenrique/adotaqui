@@ -18,7 +18,6 @@ export default function RegisteredAnimal() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [petToDelete, setPetToDelete] = useState(null);
 
-  // Função para mostrar detalhes do pet selecionado
   const handleDetailsClick = (id) => {
     try {
       const pet = pets.find(p => p.id === id);
@@ -30,7 +29,6 @@ export default function RegisteredAnimal() {
     }
   }
 
-  // Função para buscar a lista de pets
   const getPets = async () => {
     try {
       const response = await axios.get('http://localhost:3001/pets');

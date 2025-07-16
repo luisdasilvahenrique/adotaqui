@@ -133,11 +133,6 @@
   margin-bottom: 20px;
 }
 
-.btn-adopt,
-.btn-details {
-   /* font-size: 2rem; */
-}
-
 .btn-adopt {
   background-color: #ff9800;
 }
@@ -152,15 +147,14 @@
     margin: 20px 20px;
   }
 
-  .btn-home {
-    width: 100%;
+  .search-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
   }
 
   .btn-adopt,
   .btn-details {
     justify-content: center;
-   border: 1px solid red;
-
   }
 
   .search-container {
@@ -197,5 +191,9 @@
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
+  }
+
+  .btn-home{
+    max-width: 50%;
   }
 }
