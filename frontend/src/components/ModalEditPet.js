@@ -1,6 +1,23 @@
 import '../css/ModalEditPet.css';
 import { useState } from 'react';
 
+const dogBreeds = [
+  'Beagle',
+  'Bulldog',
+  'Labrador Retriever',
+  'Pastor Alemão',
+  'Poodle',
+  'Sem Raça Definida'
+];
+
+const catBreeds = [
+  'Siamês',
+  'Persa',
+  'Maine Coon',
+  'Bengal',
+  'Sem Raça Definida',
+];
+
 export default function ModalEditPet({ pet, onClose }) {
   const [formData, setFormData] = useState({ ...pet });
 
@@ -48,11 +65,14 @@ export default function ModalEditPet({ pet, onClose }) {
         <h2 className='modal-title'>Editar Pet</h2>
         <form onSubmit={handleSubmit}>
           <label>Nome</label>
-          <input class = ".input" type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+          <input class=".input" type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
           <label>Idade</label>
-          <input class = ".input" type="number" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} />
+          <input class=".input" type="number" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} min={'1'} required />
           <label>Tipo de Animal</label>
-          <input class = ".input" type="text" value={formData.type_of_animal} onChange={(e) => setFormData({ ...formData, type_of_animal: e.target.value })} />
+          <select value={formData.type_of_animal} onChange={(e) => setFormData({...formData, type_of_animal: e.target.value, breed: '',})}>
+            <option value="Cão">Cão</option>
+            <option value="Gato">Gato</option>
+          </select>
           <label>Descrição</label>
           <textarea value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}></textarea>
           <label>Gênero</label>
@@ -61,11 +81,41 @@ export default function ModalEditPet({ pet, onClose }) {
             <option value="Fêmea">Fêmea</option>
           </select>
           <label>Imagem do Animal</label>
-          <input class = ".input" type="text" value={formData.image_of_animal} onChange={(e) => setFormData({ ...formData, image_of_animal: e.target.value })} />
+          <input class=".input" type="url" value={formData.image_of_animal} onChange={(e) => setFormData({ ...formData, image_of_animal: e.target.value })} required/>
           <img src={formData.image_of_animal} alt="Pet" className="pet-image" />
           <br />
           <label>Raça</label>
-          <input class = ".input" type="text" value={formData.breed} onChange={(e) => setFormData({ ...formData, breed: e.target.value })} />
+          {formData.type_of_animal === 'Cão' && (
+            <select
+              name="breed"
+              value={formData.breed}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Selecione a raça</option>
+              {dogBreeds.map((b) => (
+                <option key={b} value={b}>
+                  {b}
+                </option>
+              ))}
+            </select>
+          )}
+
+          {formData.type_of_animal === 'Gato' && (
+            <select
+              name="breed"
+              value={formData.breed}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Selecione a raça</option>
+              {catBreeds.map((b) => (
+                <option key={b} value={b}>
+                  {b}
+                </option>
+              ))}
+            </select>
+          )}
           <label>Status</label>
           <select value={formData.adopted ? 'Adotado' : 'Disponível'} onChange={(e) => setFormData({ ...formData, adopted: e.target.value === 'Adotado' })}>
             <option value="Disponível">Disponível</option>
