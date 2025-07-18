@@ -9,8 +9,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function SearchForPets() {
-  const [pets, setPets]           = useState([]);
-  const [allPets, setAllPets]     = useState([]);
+  const [pets, setPets] = useState([]);
+  const [allPets, setAllPets] = useState([]);
   const [selectedPet, setSelectedPet] = useState(null);
   const navigate = useNavigate();
 
@@ -64,7 +64,7 @@ export default function SearchForPets() {
         const age = Number(p.age);
         if (f.age === '0-1') return age <= 1;
         if (f.age === '1-3') return age >= 1 && age <= 3;
-        if (f.age === '4+')  return age >= 4;
+        if (f.age === '4+') return age >= 4;
         return true;
       });
     }
@@ -100,7 +100,7 @@ export default function SearchForPets() {
 
         <div className="content">
           <div className="back-home">
-            <button className="btn btn-home" onClick={() => navigate('/')}>
+            <button className="btn btn-home" onClick={() => navigate('/painel-main')}>
               <ArrowBigLeft /> Voltar para Home
             </button>
           </div>

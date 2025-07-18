@@ -4,8 +4,8 @@ import axios from 'axios';
 import '../css/SidebarFilters.css';
 
 export default function SidebarFilters({
-  filters,      // filtros já aplicados (só para exibir check‑boxes marcados)
-  onApply,      // ⇐ novo callback
+  filters,
+  onApply,
   onClear,
   className = '',
 }) {

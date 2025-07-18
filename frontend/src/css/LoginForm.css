@@ -1,0 +1,85 @@
+/* Estilização geral do container */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../assets/background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
+
+/* Formulário */
+.login-form {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.logo-container img {
+  width: 120px;
+}
+
+/* Labels e inputs */
+.login-form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+  color: #333;
+}
+.login-form input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.login-form input:focus {
+  border-color: #0077ff;
+}
+
+/* Mensagens de erro */
+.login-form p {
+  color: #d10000;
+  font-size: 0.85rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+/* Botão */
+.login-form button {
+  padding: 12px;
+  background-color: #0077ff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.login-form button:hover {
+  background-color: #005ec7;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .login-form {
+    padding: 30px 20px;
+  }
+}

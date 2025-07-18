@@ -1,20 +1,30 @@
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from '../App';
-import AdoptionQueue from '../pages/AdoptionQueue';
-import ModalEditPet from '../components/ModalEditPet';
-import { Search } from 'lucide-react';
-import SearchForPets from '../pages/SearchForPets';
+
+import RegisteredAnimal from './pages/RegisteredAnimal';
+import SearchForPets from './pages/SearchForPets';
+import LoginForm from './pages/LoginForm';
+import PainelMain from './pages/PainelMain';
+
+import './css/App.css';
+import RegisteredAnimal from '../pages/RegisteredAnimal';
+
+function App() {
+  return (
+    <LoginForm />
+  );
+}
 
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/adoption-queue" element={<AdoptionQueue />} />
+        <Route path="/" element={<App />} />
+        <Route path="/registered-animal" element={<RegisteredAnimal />} />
         <Route path="/search-for-pets" element={<SearchForPets />} />
-        <Route path='/modal-edit-pet' element={<ModalEditPet />} />
+        <Route path="/painel-main" element={<PainelMain />} />
+        <Route path="/login-form" element={<LoginForm />} />
       </Routes>
-
     </BrowserRouter>
   );
 }

@@ -1,7 +1,8 @@
-// Sidebar_with_filters.jsx
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import SidebarFilters from './SidebarFilters';
+
+import logo from '../assets/logo2.svg';
 
 export default function Sidebar({
   filters,
@@ -14,7 +15,9 @@ export default function Sidebar({
   return (
     <header className="sidebar">
       <div className="navbar-content">
-        <h1 className="logo">AdotAqui</h1>
+        <h1 className="logo">
+          <img src={logo} alt="AdotAqui" />
+        </h1>
 
         <button
           className="menu-toggle"

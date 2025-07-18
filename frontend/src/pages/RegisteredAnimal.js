@@ -6,7 +6,7 @@ import ModalEditPet from '../components/ModalEditPet';
 import PetDetails from '../components/PetDetails';
 
 import { useNavigate } from 'react-router-dom';
-import { ArrowBigLeft, Trash2, Info, Edit2, HomeIcon } from 'lucide-react';
+import { ArrowBigLeft, Trash2, Info, Edit2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -80,8 +80,8 @@ export default function RegisteredAnimal() {
   return (
     <>
       <div className="adoption-container">
-        <button onClick={() => navigate('/')} className="btn btn-home">
-          <ArrowBigLeft /> Voltar para Home 
+        <button onClick={() => navigate('/painel-main')} className="btn btn-home">
+          <ArrowBigLeft /> Voltar para Home
         </button>
         <h1 className="adoption-title">Animais Cadastrados</h1>
 

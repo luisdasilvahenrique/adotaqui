@@ -24,6 +24,31 @@ dataBase.connect((err) => {
 }
 );
 
+// Rota para autenticação do administrador
+app.post('/adm', (req, res) => {
+  const { usuario, senha } = req.body;
+  if (!usuario || !senha) {
+    return res.status(400).json({ mensagem: 'Usuário e senha são obrigatórios' });
+  }
+
+  dataBase.query('SELECT * FROM adm WHERE usuario = ?', [usuario], (err, result) => {
+    if (err) return res.status(500).json({ erro: 'Erro no servidor' });
+
+    if (result.length === 0) {
+      return res.status(404).json({ campo: 'usuario', mensagem: 'Usuário não encontrado' });
+    }
+
+    result = result[0];
+    const senhaCorreta = result.senha === senha;
+    if (!senhaCorreta) {
+      return res.status(401).json({ campo: 'senha', mensagem: 'Senha incorreta' });
+    }
+
+    res.status(200).json({ mensagem: 'Login autorizado' });
+  });
+});
+
+
 // Rota para listar todos os pets
 app.get('/pets', (req, res) => {
   const sql = 'SELECT * FROM pets';
@@ -102,7 +127,6 @@ app.get('/pets/filters/types', (req, res) => {
   dataBase.query(sql, (err, result) => {
     if (err) return res.status(500).json({ error: 'Erro ao buscar tipos' });
     res.json(result.map(r => r.type_of_animal));
-    console.log('Tipo recebido:', result.breed); 
   });
 });
 
@@ -112,7 +136,7 @@ app.get('/pets/filters/genders', (req, res) => {
   dataBase.query(sql, (err, result) => {
     if (err) return res.status(500).json({ error: 'Erro ao buscar gêneros' });
     res.json(result.map(r => r.gender));
-    
+
   });
 });
 
