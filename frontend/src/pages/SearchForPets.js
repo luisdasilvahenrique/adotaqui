@@ -34,6 +34,19 @@ export default function SearchForPets() {
     }
   };
 
+  //
+  function adoptedTrue(petId) {
+  axios.patch(`http://localhost:3001/pets/adopted/${petId}`)
+    .then(response => {
+      console.log(response.data.message);
+      alert("Pet adotado Com sucesso!✅")
+      getPets();
+    })
+    .catch(error => {
+      console.error('Erro ao adotar pet:', error);
+    });
+}
+
   useEffect(() => {
     getPets();
   }, []);
@@ -127,7 +140,7 @@ export default function SearchForPets() {
                     </p>
                   </div>
                   <div className="action-buttons">
-                    <button className="btn btn-adopt">
+                    <button className="btn btn-adopt" onClick={() => adoptedTrue(pet.id)}>
                       <HandHeartIcon size={20} /> Adotar
                     </button>
                     <button

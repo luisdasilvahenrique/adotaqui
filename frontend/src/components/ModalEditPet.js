@@ -65,9 +65,9 @@ export default function ModalEditPet({ pet, onClose }) {
         <h2 className='modal-title'>Editar Pet</h2>
         <form onSubmit={handleSubmit}>
           <label>Nome</label>
-          <input class=".input" type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+          <input className="input" type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
           <label>Idade</label>
-          <input class=".input" type="number" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} min={'1'} required />
+          <input className="input" type="number" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} min={'1'} required />
           <label>Tipo de Animal</label>
           <select value={formData.type_of_animal} onChange={(e) => setFormData({...formData, type_of_animal: e.target.value, breed: '',})}>
             <option value="Cão">Cão</option>
@@ -81,7 +81,7 @@ export default function ModalEditPet({ pet, onClose }) {
             <option value="Fêmea">Fêmea</option>
           </select>
           <label>Imagem do Animal</label>
-          <input class=".input" type="url" value={formData.image_of_animal} onChange={(e) => setFormData({ ...formData, image_of_animal: e.target.value })} required/>
+          <input className="input" type="url" value={formData.image_of_animal} onChange={(e) => setFormData({ ...formData, image_of_animal: e.target.value })} required/>
           <img src={formData.image_of_animal} alt="Pet" className="pet-image" />
           <br />
           <label>Raça</label>

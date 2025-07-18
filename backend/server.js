@@ -24,6 +24,19 @@ dataBase.connect((err) => {
 }
 );
 
+//rota para atualizar um id de pet com adopted = true
+app.patch('/pets/adopted/:id', (req, res) => {
+  const { id } = req.params;
+  const sql = 'UPDATE pets SET adopted = true WHERE id = ?';
+  dataBase.query(sql, [id], (err, result) => {
+    if (err) {
+      console.error('Erro ao adotar um Pet:', err);
+      return res.status(500).json({ error: 'Erro ao adotar um Pet' });
+    }
+    res.json({ message: 'Pet Adotado com sucesso!' });
+  });
+});
+
 // Rota para listar todos os pets
 app.get('/pets', (req, res) => {
   const sql = 'SELECT * FROM pets';
@@ -37,7 +50,7 @@ app.get('/pets', (req, res) => {
 
 });
 
-// Rota para cadastra um novo pet
+// Rota para cadastrar um novo pet
 app.post('/pets', (req, res) => {
   const { id, name, breed, type_of_animal, description, adopted, gender, image_of_animal, age } = req.body;
   const sql = 'INSERT INTO pets (id, name, breed, type_of_animal, description, adopted, gender, image_of_animal, age) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
